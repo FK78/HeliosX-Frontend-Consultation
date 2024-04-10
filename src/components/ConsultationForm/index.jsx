@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import RadioButton from "../RadioButton";
+import "./index.css";
 
 const ConsultationForm = ({ onSubmit, onChange, questions }) => {
   return (

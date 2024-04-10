@@ -4,6 +4,7 @@ import consultationService from "./services/consultation";
 import consultationQuestions from "./data/consultationQuestions";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import './App.css'
 
 const App = () => {
   const [answers, setAnswers] = useState({});

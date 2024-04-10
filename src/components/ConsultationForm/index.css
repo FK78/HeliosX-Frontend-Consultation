@@ -1,0 +1,33 @@
+.consultationForm {
+    margin: 20px auto;
+    max-width: 900px;
+    padding: 20px 20px 15px 20px;
+    width: 80%;
+    border: 2px solid;
+}
+
+.consultationQuestion {
+    padding: 5px;
+    margin: auto;
+    border: 1px solid;
+    box-sizing: border-box;
+}
+
+.submitButtonWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.submitButton {
+    margin-top: 15px;
+}
+
+.question {
+    padding-left: 5px;
+    display: inline-block;
+}
+
+.radioButtonContainer {
+    margin-top: 5px;
+}
