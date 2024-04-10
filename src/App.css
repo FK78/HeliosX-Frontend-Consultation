@@ -1,0 +1,10 @@
+body {
+    font-family: Verdana, sans-serif;
+    margin: 0px;
+}
+
+.contentWrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
