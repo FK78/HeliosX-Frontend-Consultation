@@ -7,6 +7,7 @@ const App = () => {
   const [answers, setAnswers] = useState({});
   const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+
   useEffect(() => {
     setQuestions(consultationQuestions);
   }, []);
@@ -17,34 +18,22 @@ const App = () => {
   };
 
   const updateQuestion = (name) => {
-    const currentQuestion = questions.find(
-      ({ questionName }) => questionName === name
-    )?.question;
-
-    const currentQuestionName = questions.find(
-      ({ questionName }) => questionName === name
-    )?.questionName;
-
-    const updatedQuestion = {
-      question: currentQuestion,
-      questionName: currentQuestionName,
-      answered: true,
-    };
-
-    setQuestions(
-      questions.map((question) =>
-        question.questionName !== name ? question : updatedQuestion
+    setQuestions((prevQuestions) =>
+      prevQuestions.map((question) =>
+        question.questionName === name
+          ? { ...question, answered: true }
+          : question
       )
     );
   };
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    
+
     const getQuestion = questions.find(
       ({ questionName }) => questionName === name
     ).question;
-    
+
     setAnswers((prevAnswers) => ({
       ...prevAnswers,
       [getQuestion]: value,
@@ -52,12 +41,10 @@ const App = () => {
 
     updateQuestion(name);
 
-    const hasTheCurrentOneAlreadyBeenAnswered = questions.find(
-      ({ questionName }) => questionName === name
-    ).answered;
-
-    if (hasTheCurrentOneAlreadyBeenAnswered === false) {
-      setCurrentQuestionIndex(currentQuestionIndex + 1);
+    if (
+      !questions.find(({ questionName }) => questionName === name)?.answered
+    ) {
+      setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
     }
   };
 
