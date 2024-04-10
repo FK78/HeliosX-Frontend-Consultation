@@ -1,0 +1,12 @@
+.mobile-brand-logo {
+  max-width: 100%;
+  height: auto;
+}
+
+.logoWrapper {
+  padding: 20px;
+  margin: 0 auto;
+  text-align: center;
+  display: block;
+  background-color: lightblue;
+}

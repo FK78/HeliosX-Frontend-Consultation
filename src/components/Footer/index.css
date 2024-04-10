@@ -1,0 +1,21 @@
+@media only screen and (max-width: 900px) {
+  .footerWrapper {
+    display: none !important;
+  }
+}
+
+.footerWrapper {
+  margin-top: auto;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: lightblue;
+  color: white;
+}
+
+li {
+  list-style: none;
+}

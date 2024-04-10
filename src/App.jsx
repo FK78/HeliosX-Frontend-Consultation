@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import ConsultationForm from "./components/ConsultationForm";
 import consultationService from "./services/consultation";
 import consultationQuestions from "./data/consultationQuestions";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 const App = () => {
   const [answers, setAnswers] = useState({});
@@ -54,11 +56,13 @@ const App = () => {
 
   return (
     <div className="contentWrapper">
+      <Header/>
       <ConsultationForm
         onSubmit={handleSubmit}
         onChange={handleInputChange}
         questions={questionsToPass}
       />
+      <Footer/>
     </div>
   );
 };
