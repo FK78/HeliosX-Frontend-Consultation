@@ -4,12 +4,13 @@ import consultationService from "./services/consultation";
 import consultationQuestions from "./data/consultationQuestions";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import './App.css'
+import "./App.css";
 
 const App = () => {
   const [answers, setAnswers] = useState({});
   const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [allQuestionsShowing, setAllQuestionsShowing] = useState(false);
 
   useEffect(() => {
     setQuestions(consultationQuestions);
@@ -49,6 +50,10 @@ const App = () => {
     ) {
       setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
     }
+
+    if (currentQuestionIndex === 4) {
+      setAllQuestionsShowing(true);
+    }
   };
 
   const questionsToPass = questions.filter(
@@ -57,13 +62,14 @@ const App = () => {
 
   return (
     <div className="contentWrapper">
-      <Header/>
+      <Header />
       <ConsultationForm
         onSubmit={handleSubmit}
         onChange={handleInputChange}
         questions={questionsToPass}
+        allQuestionsShowing={allQuestionsShowing}
       />
-      <Footer/>
+      <Footer />
     </div>
   );
 };

@@ -2,7 +2,12 @@ import PropTypes from "prop-types";
 import RadioButton from "../RadioButton";
 import "./index.css";
 
-const ConsultationForm = ({ onSubmit, onChange, questions }) => {
+const ConsultationForm = ({
+  onSubmit,
+  onChange,
+  questions,
+  allQuestionsShowing,
+}) => {
   return (
     <form className="consultationForm" onSubmit={onSubmit}>
       {questions.map((q, i) => (
@@ -26,9 +31,13 @@ const ConsultationForm = ({ onSubmit, onChange, questions }) => {
           </div>
         </div>
       ))}
-      <div className="submitButtonWrapper">
-        <button className="submitButton" type="submit">Submit</button>
-      </div>
+      {allQuestionsShowing ? (
+        <div className="submitButtonWrapper">
+          <button className="submitButton" type="submit">
+            Submit
+          </button>
+        </div>
+      ) : null}
     </form>
   );
 };
@@ -37,6 +46,7 @@ ConsultationForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
   questions: PropTypes.array.isRequired,
+  allQuestionsShowing: PropTypes.bool.isRequired,
 };
 
 export default ConsultationForm;
