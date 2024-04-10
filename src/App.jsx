@@ -4,6 +4,7 @@ import consultationService from "./services/consultation";
 import consultationQuestions from "./data/consultationQuestions";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import ThankYou from "./components/ThankYou";
 import "./App.css";
 
 const App = () => {
@@ -11,6 +12,7 @@ const App = () => {
   const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [allQuestionsShowing, setAllQuestionsShowing] = useState(false);
+  const [showThankYou, setShowThankYou] = useState(false);
 
   useEffect(() => {
     setQuestions(consultationQuestions);
@@ -19,6 +21,7 @@ const App = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     consultationService.sendConsultationAnswers(answers);
+    setShowThankYou(true);
   };
 
   const updateQuestion = (name) => {
@@ -34,20 +37,18 @@ const App = () => {
   const handleInputChange = (event) => {
     const { name, value } = event.target;
 
-    const getQuestion = questions.find(
+    const questionToUpdate = questions.find(
       ({ questionName }) => questionName === name
-    ).question;
+    );
 
     setAnswers((prevAnswers) => ({
       ...prevAnswers,
-      [getQuestion]: value,
+      [questionToUpdate.question]: value,
     }));
 
     updateQuestion(name);
 
-    if (
-      !questions.find(({ questionName }) => questionName === name)?.answered
-    ) {
+    if (!questionToUpdate.answered) {
       setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
     }
 
@@ -69,6 +70,7 @@ const App = () => {
         questions={questionsToPass}
         allQuestionsShowing={allQuestionsShowing}
       />
+      {showThankYou ? <ThankYou /> : null}
       <Footer />
     </div>
   );
