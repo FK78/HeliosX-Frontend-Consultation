@@ -70,7 +70,7 @@ const App = () => {
         questions={questionsToPass}
         allQuestionsShowing={allQuestionsShowing}
       />
-      {showThankYou ? <ThankYou /> : null}
+      {showThankYou && <ThankYou />}
       <Footer />
     </div>
   );

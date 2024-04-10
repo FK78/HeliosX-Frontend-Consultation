@@ -31,13 +31,13 @@ const ConsultationForm = ({
           </div>
         </div>
       ))}
-      {allQuestionsShowing ? (
+      {allQuestionsShowing && (
         <div className="submitButtonWrapper">
           <button className="submitButton" type="submit">
             Submit
           </button>
         </div>
-      ) : null}
+      )}
     </form>
   );
 };
